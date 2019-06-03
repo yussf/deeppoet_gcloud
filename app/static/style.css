@@ -1,0 +1,24 @@
+body{
+    background: #333;
+}
+.main h2, h3{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    
+}
+.main{
+    color: #fff ;
+}
+
+#poem_display{
+    display: none;
+}
+#get_btn{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+#retry_btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: none;
+}
