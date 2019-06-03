@@ -10,7 +10,11 @@ path = Path(__file__).parent
 
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
-app.mount('/static', StaticFiles(directory='app/static'))
+
+if __name__ == '__main__':
+    if 'serve' in sys.argv: app.mount('/static', StaticFiles(directory='app/static'))
+    if 'test' in sys.argv: app.mount('/static', StaticFiles(directory='./static'))
+
 
 @app.route('/getpoem')
 def index(request):
@@ -18,6 +22,10 @@ def index(request):
     poem = write_poem(init)
     return PlainTextResponse(poem)
 
+@app.route('/getWordsList')
+def index(request):
+    return PlainTextResponse(open("words").read())
+    
 @app.route('/')
 def index(request):
     html = path/'view/index.html'
@@ -25,4 +33,5 @@ def index(request):
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
+    if 'test' in sys.argv: uvicorn.run(app, host='localhost', port=3000)
 

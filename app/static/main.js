@@ -1,6 +1,14 @@
 $(document).ready(function(){
-    
+    var words;
+    $.get("/getWordsList", data => {
+        words = data.split("!")
+    })
 
+    function getRandomWord(callback){
+        var i = Math.floor(Math.random()*words.length) 
+        callback(words[i])
+    }
+    
     $("#get_btn").on("click", function(){
         $("#word_form").fadeOut(2)
         $("#poem_display").fadeIn()
@@ -19,6 +27,10 @@ $(document).ready(function(){
         $("#retry_btn").fadeOut()
     })
 
+    $("#random_btn").on("click", function(){
+        getRandomWord(word => $("#word_input").val(word))
+        
+    })
     $(document).on("keypress", function(e){
         if (e.which == 13) $("#get_btn").click()
     })
