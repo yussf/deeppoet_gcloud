@@ -4,6 +4,6 @@ starlette
 uvicorn
 python-multipart
 aiofiles
-psycopg2
+psycopg2-binary
 python-dotenv
 aiohttp
