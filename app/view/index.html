@@ -42,11 +42,40 @@
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="One simple word ... or two" id="word_input">
                                 <div class="input-group-append">
-                                  <button class="btn btn-outline-success" type="button" id="random_btn">Random Word</button>
+                                <button class="btn btn-outline-success" type="button" id="random_btn">Random Word</button>
                                 </div>
                             </div>
                         </div>
+                        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+                        Advanced config.
+                        </button><br>
+                        <div class="collapse" id="collapse">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="length_input">Poem's length:</label>
+                                        <input type="text" class="form-control" placeholder="Length" id="length_input" value="100">
+                                    </div>
+                                    <div class="col">
+                                        <label for="rep_input">Repetition tolerance:</label>
+                                        <input type="text" class="form-control" placeholder="Repetition tolerance" id="rep_input" value="8">
+                                    </div>
+                                    <div class="col">
+                                        <label for="max_input">Max attempts:</label>
+                                        <input type="text" class="form-control" placeholder="Max attempts" id="max_input" value="10">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="max_input">Temperature:</label>&nbsp;<label id="temp_label">0.55</label>
+                                        <input type="range" class="custom-range" id="temp_input" min="0.1" max="1" step="0.01" value="0.55">                
+                                    </div>
+                                    <div class="col">
+                                            <button class="btn btn-outline-danger" type="button" id="reset_btn" style="width: 100%">Reset</button>
+                                    </div>
+                                </div>
+                        </div>
                         <button type="button" class="btn btn-success" id="get_btn">Make me a poem</button>
+
                  </div>
                  <div id="poem_display">
                     <h2>Here is your poem :</h2>

@@ -19,7 +19,12 @@ if __name__ == '__main__':
 @app.route('/getpoem')
 def index(request):
     init = request.query_params['init']
-    poem = write_poem(init)
+    temp = float(request.query_params['temp'])
+    length = int(request.query_params['length'])
+    rep = int(request.query_params['rep'])
+    max = int(request.query_params['max'])
+    print(init,temp,length,rep,max)
+    poem = write_poem(init,temp,length,rep,max)
     return PlainTextResponse(poem)
 
 @app.route('/getWordsList')

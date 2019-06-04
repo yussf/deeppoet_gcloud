@@ -28,12 +28,8 @@ def savePoem(poem, init, length, temp, counter, repetition_tolerance):
   cursor.execute("INSERT INTO poems VALUES (default, %s, %s, %s, %s, %s, %s)", args)
   connection.commit()
 
-def write_poem(init):
-  max = 10
+def write_poem(init, temp=0.55, length=100, repetition_tolerance=8, max=10):
   counter = 0
-  length = 100
-  temp = 0.55
-  repetition_tolerance = 8
   poem = generate_poem(init,length,temp)
   while getMax(poem)>= repetition_tolerance :
       counter += 1
