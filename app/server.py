@@ -24,7 +24,8 @@ def index(request):
 
 @app.route('/getWordsList')
 def index(request):
-    return PlainTextResponse(open("words").read())
+    file = path/'words'
+    return PlainTextResponse(open(file).read())
     
 @app.route('/')
 def index(request):
