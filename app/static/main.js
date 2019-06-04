@@ -9,14 +9,30 @@ $(document).ready(function(){
         callback(words[i])
     }
     
+    function isValid(word){
+        return /^[a-zA-Z]+$/.test(word)
+    }
+
     $("#get_btn").on("click", function(){
-        $("#word_form").fadeOut(2)
-        $("#poem_display").fadeIn()
-        $.get("/getpoem", {"init" : $("#word_input").val()}, (data) => {
-            $("#spiners").fadeOut(2)
-            $("#poem").html(data)
-            $("#retry_btn").fadeIn()
-        })
+        if (isValid($("#word_input").val())){
+            $("#word_form").fadeOut(2)
+            $("#poem_display").fadeIn()
+            $.get("/getpoem", {"init" : $("#word_input").val()}, (data) => {
+                $("#spiners").fadeOut(2)
+                $("#poem").html(data)
+                $("#retry_btn").fadeIn()
+            })    
+        }
+    })
+
+    $("#word_input").on("change", function(){
+        console.log("test");
+        
+        if (!(isValid($(this).val()))){
+            $(this).addClass("is-invalid")
+        }else{
+            $(this).removeClass("is-invalid")
+        }
     })
 
     $("#retry_btn").on("click", function(){
